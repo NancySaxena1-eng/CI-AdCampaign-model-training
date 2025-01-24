@@ -1,11 +1,11 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/udemy-mlops/advertising_roi_model', '.']
+  args: ['build', '-t', 'gcr.io/testmlops-446623/advertising_roi_model', '.']
 
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/udemy-mlops/advertising_roi']
+  args: ['push', 'gcr.io/testmlops-446623/advertising_roi_model']
 
-- name: 'gcr.io/udemy-mlops/advertising_roi'
+- name: 'gcr.io/testmlops-44662/advertising_roi'
   entrypoint: 'bash'
   args:
    - '-c'
@@ -13,13 +13,13 @@ steps:
       python -m pytest
 
 - name: 'gcr.io/cloud-builders/git'
-  args: ['clone', 'https://github.com/sidoncloud/your-repository-name.git']
+  args: ['clone', 'https://github.com/NancySaxena1-eng/CI-AdCampaign-model-training.git']
 
 - name: 'gcr.io/cloud-builders/gsutil'
-  args: ['cp', 'model-training-repo/advertising_model_training.py', 'gs://us-central1-mlops-airflow-faa6f9bc-bucket/dags']
+  args: ['cp', 'CI-AdCampaign-model-training/advertising_model_training.py', 'gs://us-central1-mlops-airflow-bfa9c57d-bucket/dags']
 
 images:
-- 'gcr.io/udemy-mlops/advertising_roi'
+- 'gcr.io/testmlops-44662/advertising_roi'
 
 options:
   logging: CLOUD_LOGGING_ONLY
