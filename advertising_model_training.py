@@ -11,7 +11,7 @@ from google.cloud import bigquery
 import json 
 
 storage_client = storage.Client()
-bucket = storage_client.bucket("sid-ml-ops")
+bucket = storage_client.bucket("mlops-test2")
 
 def read_campaign_data(file_path):
     df = pd.read_csv(file_path)
@@ -48,7 +48,7 @@ def merge_dataframes(df_revenue, df_spend):
 
 def write_metrics_to_bigquery(algo_name, training_time, model_metrics):
     client = bigquery.Client()
-    table_id = "udemy-mlops.ml_ops.advertising_roi_model_metrics"
+    table_id = "testmlops-446623.ml_ops.advertising_roi_model_metrics"
     table = bigquery.Table(table_id)
 
     row = {"algo_name": algo_name, "training_time": training_time.strftime('%Y-%m-%d %H:%M:%S'), "model_metrics": json.dumps(model_metrics)}
@@ -96,10 +96,10 @@ def save_model(model):
 
 def main():
 
-    campaign_file_path = "gs://sid-ml-ops/advertising_roi/campaign_spend.csv"
+    campaign_file_path = "gs://mlops-test2/advertising_roi/campaign_spend.csv"
     df_spend = read_campaign_data(campaign_file_path)
 
-    revenue_file_path = "gs://sid-ml-ops/advertising_roi/monthly_revenue.csv"
+    revenue_file_path = "gs://mlops-test2/advertising_roi/monthly_revenue.csv"
     df_revenue_per_month = calculate_revenue_per_month(revenue_file_path)
 
     df_spend_per_month = calculate_spend_per_month(df_spend)
