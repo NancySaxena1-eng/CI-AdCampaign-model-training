@@ -19,7 +19,7 @@ steps:
   args: ['cp', 'CI-AdCampaign-model-training/advertising_model_training.py', 'gs://us-central1-mlops-airflow-bfa9c57d-bucket/dags']
 
 images:
-- 'gcr.io/testmlops-446623/advertising_roi'
+- 'gcr.io/testmlops-446623/advertising_roi_model'
 
 options:
   logging: CLOUD_LOGGING_ONLY
