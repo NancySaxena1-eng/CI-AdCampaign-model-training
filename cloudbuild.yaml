@@ -5,7 +5,7 @@ steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/testmlops-446623/advertising_roi_model']
 
-- name: 'gcr.io/testmlops-44662/advertising_roi'
+- name: 'gcr.io/testmlops-44662/advertising_roi_model'
   entrypoint: 'bash'
   args:
    - '-c'
